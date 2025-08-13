@@ -8,7 +8,7 @@ import cors from "cors";
 const app = express();
 app.use(
   cors({
-    origin: 'https://deploy-frontend-mern-mongodb.vercel.app/',
+    origin: 'https://deploy-frontend-mern-mongodb.vercel.app',
     credentials: true,
   })
 );
