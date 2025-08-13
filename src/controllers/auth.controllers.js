@@ -2,6 +2,7 @@ import userModel from "../models/usuarios.models.js";
 import bcryptjs from "bcryptjs";
 import { CrearToken } from "../libs/token.libs.js";
 import jwt from "jsonwebtoken";
+import SECRET_TOKEN from '../config.js'
 
 export const registro = async (req, res) => {
   try {
@@ -79,7 +80,7 @@ export const VerificacionToken = async (req, res) => {
   const { token } = req.cookies;
   if (!token) return res.status(401).json({ message: "no autorizado" });
 
-  jwt.verify(token, "secret", async (err, user) => {
+  jwt.verify(token, SECRET_TOKEN, async (err, user) => {
     if (err) return res.status(401).json({ message: "no autorizado" });
     const usuarioEncontrado = await userModel.findById(user.id);
     if (!usuarioEncontrado)
