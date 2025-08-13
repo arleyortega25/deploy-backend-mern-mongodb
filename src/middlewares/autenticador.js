@@ -6,7 +6,7 @@ export const autenticar = (req, res, next) => {
   jwt.verify(cookie, SECRET_TOKEN, (error, user) => {
     if (error)
       return res.status(401).json({ message: "usuario no encontrado" });
-    req.user = user;
+    req.usuario = user;
     next();
   });
   
